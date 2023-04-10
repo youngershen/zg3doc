@@ -8,20 +8,27 @@
 # Email : shenyangang@163.com
 
 """
-
-
-
+例题一:
+包括三个简单的数据分析小案例, 初学者入门使用
 """
+import pandas as pd
 
 
 def test1():
     # 1.导入线性回归对应模块,并读取Advertising(广告)数据源
+    data = pd.read_csv('./data/Advertising.csv')
     # 2.取出所有特征值与目标值
+
     # 3.拆分训练集和测试集
+
     # 4.创建线性回归模型并进行训练
+
     # 5.使用自定义数据对模型进行预测
+
     # 6.计算模型权重与截距
+
     # 7.使用R方对模型效果进行评估
+
     # 8.不调用模型的predict方法,对未知的数据进行预测
     pass
 
@@ -30,9 +37,8 @@ def test2():
     """
     x表示二维矩阵，篮球运动员比赛数据, 第一列表示球员每分钟的助攻数,第二列表示球员每分钟的的分数
     输出完整的kmeans函数，包括很多省略参数
-
     """
-    x = [[0.0888, 0.5885],
+    X = [[0.0888, 0.5885],
          [0.1399, 0.8291],
          [0.0747, 0.4974],
          [0.0983, 0.5772],
@@ -53,10 +59,29 @@ def test2():
          [0.1007, 0.6318],
          [0.1067, 0.4326],
          [0.1956, 0.4280]]
-    print(x)
+    print(X)
     # 1. 输出聚类预测结果
     # 2. 将聚类结果绘制成散点图
-    pass
+    import numpy as np
+    import matplotlib.pyplot as plt
+    from sklearn.cluster import KMeans
+
+    clf = KMeans(n_clusters=3)
+    y_pred = clf.fit_predict(X)
+    print(clf)
+    print(y_pred)
+
+    x = [n[0] for n in X]
+    print(x)
+    y = [n[0] for n in X]
+
+    print(y)
+    plt.scatter(x, y, c=y_pred, marker='x')
+    plt.title("Kmeans Basketball Dat")
+    plt.xlabel("assists per minute")
+    plt.ylabel("points per minutes")
+    plt.legend("Rank")
+    plt.show()
 
 
 def test3():
@@ -76,6 +101,7 @@ def test3():
 
 
 def main():
+    test2()
     print("test")
     pass
 
