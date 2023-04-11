@@ -1,27 +1,41 @@
 import pandas as pd
 import numpy as np
 
-"""
-标准差，又称标准偏差、均方差
-英语：standard deviation，缩写SD，符号σ
-在概率统计中最常使用作为测量一组数值的离散程度之用。
-标准差定义：为方差开算术平方根，
-反映组内个体间的离散程度；
-标准差与期望值之比为标准离差率。
+# pandas 中的分组聚合
 
-标准差法是一种常见的统计学方法，
-用于衡量一组数据的离散程度。
-标准差本质上是一种度量数值变化范围的方法，
-它表示一组数据点相对于平均值的偏离程度。
-具体来说，如果一组数据的平均值为μ，
-标准差为σ，那么标准差就是每个数据点与平均值的差的平方的平均值的平方根。
-标准差越大，说明数据的离散程度越大；标准差越小，则说明数据的离散程度越小。
-标准差的公式为：
-σ = sqrt(1/n * Σ(xi - μ)²)
-其中，n 是数据的数量，xi 是第 i 个数据点，μ 是所有数据的平均值。
+d1 = {
+    'A': ['foo', 'bar', 'foo', 'bar', 'foo', 'bar'],
+    'B': ['one', 'one', 'two', 'two', 'three', 'three'],
+    'C': [1, 2, 3, 4, 5, 6],
+    'D': [0.1, 0.2, 0.3, 0.4, 0.5, 0.6]
+}
 
-箱线图（Box plot）法是一种常用的统计学方法，
-用于展示数据的分布情况。
-箱线图由五个数值点组成，包括最大值、最小值、中位数、上四分位数和下四分位数。
+df1 = pd.DataFrame(d1)
+print(df1)
 
-"""
+# 按 A 列分组, 计算平均值
+print("=============")
+print(df1.groupby('A').mean(numeric_only=True))
+
+# 按 B 列分组, 统计 D 列的总和
+print("=============")
+print(df1.groupby('B')['D'].mean(numeric_only=True))
+
+# 先按 A 列分组, 再按 B 列分组, 统计所有列均值
+print("===========")
+print(df1.groupby(['A', 'B']).mean(numeric_only=True))
+
+# 对某一列应用多个聚合函数
+print("=============")
+print(df1.groupby('A').agg(['max', 'min', 'mean']))
+
+# 为列应用不同的聚合函数
+print("===================")
+print(df1.groupby('A').agg({'C': ['mean', 'sum'], 'D': 'median'}))
+
+# 使用 rename 为聚合之后的列重命名
+print("============")
+print(df1.groupby('A').agg({'C': ['mean', 'sum'], 'D': 'median'}).rename(
+    columns={'mean': '均值', 'sum': '总和', 'median': '中位数'}
+))
+
