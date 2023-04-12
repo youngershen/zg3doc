@@ -14,6 +14,19 @@ def print_line(count=50):
     print(line)
 
 
+"""
+日考一 第一套习题
+"""
+
+"""
+日考一 第二套习题
+"""
+
+"""
+日考一 第三套习题
+"""
+
+
 def case11():
     """
     日习题 1.1
@@ -75,14 +88,41 @@ def case13():
     a1[a1 % 2 == 1] = -1
     print(a1)
 
-    # 方法 2.
+
+def case14():
+    """
+    日习题 1.4 将 arr  数组转换成 2 维数组arr2
+    """
+    # 创建数组
+    arr = np.arange(0, 10)
+    print("原数组为:")
+    print(arr)
+
     print_line()
-    print("方法2")
-    print(a1)
+    print("reshape 之后的数组为:")
+    # 直使用 reshape 改编数组的形状
+    arr2 = arr.reshape((2, 5))
+    print(arr2)
+
+    """
+    日习题 1.5 获取arr2的轴的数量
+    """
+    print_line()
+    # 获取 arr2 轴的数量
+    n = arr2.ndim
+    print("arr2 轴的数量为: ")
+    print(n)
+
+    """
+    日习题 1.6 获取arr2的第1行第2列
+    """
+
+
 
 
 def main():
-    case13()
+    case14()
+    # case13()
     # case12()
     # case11()
     pass
