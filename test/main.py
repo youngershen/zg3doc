@@ -1,41 +1,27 @@
 import pandas as pd
 import numpy as np
 
-# pandas 中的分组聚合
-
-d1 = {
-    'A': ['foo', 'bar', 'foo', 'bar', 'foo', 'bar'],
-    'B': ['one', 'one', 'two', 'two', 'three', 'three'],
-    'C': [1, 2, 3, 4, 5, 6],
-    'D': [0.1, 0.2, 0.3, 0.4, 0.5, 0.6]
-}
-
-df1 = pd.DataFrame(d1)
+df1 = pd.read_csv('./data/beijing_tianqi_2019.csv')
+df1.loc[:, 'bWendu'] = df1['bWendu'].str.replace('℃', '').astype('int32')
+df1.loc[:, 'yWendu'] = df1['yWendu'].str.replace('℃', '').astype('int32')
 print(df1)
 
-# 按 A 列分组, 计算平均值
-print("=============")
-print(df1.groupby('A').mean(numeric_only=True))
+# 需要把 字符串的日期, 转换成 pandas 中的 datetime 对象
+print("==============")
+print(type(df1.loc[0, 'ymd']))
+df1.set_index(pd.to_datetime(df1['ymd']), inplace=True)
+print(type(df1.index[0]))
 
-# 按 B 列分组, 统计 D 列的总和
-print("=============")
-print(df1.groupby('B')['D'].mean(numeric_only=True))
-
-# 先按 A 列分组, 再按 B 列分组, 统计所有列均值
+# 需要统计每周的最高温
 print("===========")
-print(df1.groupby(['A', 'B']).mean(numeric_only=True))
+print(df1.index)
+print(df1.groupby(df1.index.week)['bWendu'].max())
 
-# 对某一列应用多个聚合函数
-print("=============")
-print(df1.groupby('A').agg(['max', 'min', 'mean']))
+# 使用日期方便的查询数据
+print("===============")
+print(df1.loc['2019-03-06'])
+print(df1.loc['2019-03-16': '2019-03-20'])
 
-# 为列应用不同的聚合函数
-print("===================")
-print(df1.groupby('A').agg({'C': ['mean', 'sum'], 'D': 'median'}))
-
-# 使用 rename 为聚合之后的列重命名
+# datetime 的 resample
 print("============")
-print(df1.groupby('A').agg({'C': ['mean', 'sum'], 'D': 'median'}).rename(
-    columns={'mean': '均值', 'sum': '总和', 'median': '中位数'}
-))
-
+print(df1.resample('3D').sum())
