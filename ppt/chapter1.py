@@ -210,8 +210,6 @@ def case8():
     print(a2)
 
 
-
-
 def case9():
     """
     案例九 - 多维数组的普通索引
