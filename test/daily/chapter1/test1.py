@@ -6,11 +6,12 @@
 # Cell: 13811754531
 # Wechat: 13811754531
 # Email : shenyangang@163.com
+""""
+第一单元 - 日考一 - 文档
+"""
+
 
 import numpy as np
-from collections import Counter
-
-# 使用numpy的相关方法完成以下需求
 
 """
 1．创建数字从 0 到 9 的 1 维数组arr
