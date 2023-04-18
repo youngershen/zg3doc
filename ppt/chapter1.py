@@ -181,18 +181,35 @@ def case7():
     a5 = np.array([[1, 2, 3], [4, 5, 6]])
     print("输出数组 a5:")
     print(a5)
-    print("输出数组 a5 的元素个数, 2  * 4 = ?")
+    print("输出数组 a5 的元素个数, 2  * 3 = ?")
     print(a5.size)
-
-
-    pass
 
 
 def case8():
     """
     案例八 - 多维数组的创建
+
+    数组的创建是 numpy 中非常重要的内容, numpy 中的数组拥有
+    多种不同的创建方法
     """
-    pass
+
+    """
+    1. 使用 python 数组创建 numpy 数组
+    """
+    print_line()
+    a1 = np.array([1, 2, 3, 4])
+    print("一维数组的创建:")
+    print(a1)
+
+    """
+    2. 二维数组的创建
+    """
+    print_line()
+    a2 = np.array([[1, 2, 3], [4, 5, 6]])
+    print("二维数组的创建:")
+    print(a2)
+
+
 
 
 def case9():
@@ -233,8 +250,8 @@ def main():
     # case4()
     # case5()
     # case6()
-    case7()
-    # case8()
+    # case7()
+    case8()
     # case9()
     # case10()
     # case11()
