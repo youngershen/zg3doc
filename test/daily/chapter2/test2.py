@@ -43,8 +43,7 @@ df['经验类型'] = df.apply(func1, axis=1)
 df.loc[4, '职位名称'] = 'React开发'
 
 # 5．删除经验范围列
-df.drop('经验范围', axis=1, inplace=True)
-print(df)
+df2 = df.drop('经验范围', axis=1)
 
 # 6．删除 经验在校，以及经验不限的数据
 df.drop(df[df['经验范围'].isin(['经验在校', '经验不限'])].index, axis=0, inplace=True)
@@ -55,8 +54,8 @@ pwd = 'root'  # 数据库密码
 db = '2009a'  # 数据库名称
 host = 'localhost'  # 数据库地址
 port = 3306  # 数据库端口
-con = create_engine(f'mysql+pymysql://{user}:{pwd}@{host}:{port}/{db}')  # 创建连接
-df.to_sql('lagou', con=con, if_exists='replace')
+# con = create_engine(f'mysql+pymysql://{user}:{pwd}@{host}:{port}/{db}')  # 创建连接
+# df.to_sql('lagou', con=con, if_exists='replace')
 
 # 8．通过列表lt1 = ['python进阶', 'python数据分析', 'python基础', 'python数据采集']创建series结构数据se1
 lt1 = ['python进阶', 'python数据分析', 'python基础', 'python数据采集']
