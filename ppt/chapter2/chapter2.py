@@ -6,3 +6,10 @@
 # Cell: 13811754531
 # Wechat: 13811754531
 # Email : shenyangang@163.com
+import numpy as np
+import pandas as pd
+
+"""
+1. pandas 的安装
+
+"""
