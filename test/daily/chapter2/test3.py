@@ -35,7 +35,7 @@ lt1 = ['列表', '字典', '字符串', '集合']
 se1 = pd.Series(lt1)
 
 # 9.通过列表lt2 = [['列表', 'list'],['字典', 'dict'], ['字符串', 'str'], ['集合', 'set']]创建Dataframe结构数据df1
-lt2 = [['列表', 'list'],['字典', 'dict'], ['字符串', 'str'], ['集合', 'set']]
+lt2 = [['列表', 'list'], ['字典', 'dict'], ['字符串', 'str'], ['集合', 'set']]
 df1 = pd.DataFrame(lt2)
 print(df1)
 
