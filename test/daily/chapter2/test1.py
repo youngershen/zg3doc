@@ -10,7 +10,7 @@
 import pandas as pd
 
 # 1．读取附件中的天津天气2020年10月.csv文件到df中
-df = pd.read_csv('./天津天气2020年10月.csv')
+df = pd.read_csv('./data/天津天气2020年10月.csv')
 df.columns = df.loc[0]
 print(df.columns)  # df.columns 获取字段名
 df.drop(index=0, inplace=True)  # drop删除 index是行索引  inplace=True叫原地修改
@@ -54,7 +54,7 @@ df.rename(columns={'日期': 'date'}, inplace=True)
 df.drop(index=df[df['date'] == '2020年10月1日'].index, inplace=True, axis=0)
 
 # 7．将df写入到天津天气2020年10月.html文件中
-df.to_html('./天津天气2020年10月.html')
+df.to_html('./data/天津天气2020年10月.html')
 
 # 8．通过列表lt1 = ['西游记', '水浒传', '三国演义', '红楼梦'] 创建series 结构数据se1
 lt1 = ['西游记', '水浒传', '三国演义', '红楼梦']

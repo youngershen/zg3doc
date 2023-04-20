@@ -10,7 +10,7 @@ from pandas import pd
 
 # 按要求执行以下步骤
 # 1.读取附件中的北京空气质量指数.xlsx文件到df中
-df = pd.read_excel('./北京空气质量指数.xlsx')
+df = pd.read_excel('./data/北京空气质量指数.xlsx')
 
 # 2.增加一个统计列，co,no2,so2,o3的总和
 df['统计'] = df.apply(lambda x: x['Co'] + x['No2'] + x['So2'] + x['O3'], axis=1)

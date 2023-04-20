@@ -11,7 +11,7 @@ from sqlalchemy import create_engine
 
 # 按要求执行以下步骤
 # 1．读取附件中的lagou.json文件到df中
-df = pd.read_json('./lagou.json')
+df = pd.read_json('./data/lagou.json')
 # 2．增加一个平均薪资列，为薪资范围的平均值
 
 
