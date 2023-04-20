@@ -10,13 +10,29 @@
 import pandas as pd
 
 # 1．读取附件中的天津天气 2020年10月.csv 文件到df中
+df1 = pd.read_csv('./data/天津天气2020年10月.csv')
+df2 = df1.head(5)
+df2.columns = df2.loc[0]
+df2.drop(index=0, inplace=True)
+# print(df2)
 
 # 2．增加一个气温差值列，气温最大值和最小值的差值
+
+
+def func1(x):
+    max_x = x['气温'].replace('℃', '').split('/')[0]
+    min_x = x['气温'].replace('℃', '').split('/')[1]
+    return f'{int(max_x) - int(min_x)}℃'
+
+
+df2['气温差值'] = df2.apply(func1, axis=1)
+print(df2)
+
 
 # 3．增加一个气温类型列，如果最大值大于20，代表高温，小于等于20代表低温
 
 # 4．修改2020年10月31日的数据，天气改为晴
-zuowei
+
 # 5．将原有的列名，日期修改为date
 
 # 6．删除2020年10月1日的数据
